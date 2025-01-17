@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            margin: 20px;
+            padding: 20px;
+        }
+        .movie-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .movie-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .movie-details {
+            margin-top: 8px;
+        }
+        .movie-detail {
+            margin: 5px 0;
+        }html{
+			scroll-behavior: smooth;
+		}
+    </style>
+</head>
+<body>
+	{% load static %}
+	<a href="{% url 'create' %}">Create</a>
+	<a href="{% url 'edit' %}">edit</a>
+
+	{% include 'menu.html' %}
+    <h1>Movie List</h1> <p>List of visits = {{visits}}</p>
+
+	<h3>Recent visits</h3>
+	{% for r_movies in recent_movies %}
+
+	 <p>{{r_movies.movie_name}} 
+	{% endfor %}
+    {% for movie in movies %}
+    <div class="movie-card" id="movie-{{ movie.id }}">
+        <div class="movie-title">{{ movie.movie_name }}</div>
+        <div class="movie-details" >
+            <div class="movie-detail"><strong>Director:</strong> {{ movie.director }}</div>
+            <div class="movie-detail"><strong>Year:</strong> {{ movie.movie_year }}</div>
+            <div class="movie-detail"><strong>Summary</strong> {{ movie.movie_summary }}</div>
+            <div class="movie-detail"><strong>Rating:</strong> {{ movie.movie_rate }}</div>
+			<div class="movie-detail"><a href="/edit?id={{movie.id}}">Edit this</a></div>
+        </div>
+    </div>
+    {% endfor %}
+	
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Signup </title>
+	<style>
+		* {
+			font-family: sans-serif;
+			margin: 20px 20px auto;
+		}span{
+		cursor: pointer;
+			background-color: rgb(234, 207, 132); border-radius: 8px; padding: 4px; transition: all .45s;
+		}
+		span:hover{
+			
+			border-radius: 24px;
+			background-color: aliceblue;
+
+		 
+		}
+	</style>
+</head>
+<body>
+	<h2>Become active</h2>
+	<h3>Login</h3>
+	<form  method="post">
+		{% csrf_token %}
+		
+
+		<br>
+
+		<input type="text" name="username" required>
+		<label for="">Username</label>
+		
+		<br>
+		<input type="password" name="password" required>
+		<label for="">Password</label>
+		
+		<br>
+		
+		<input type="submit" value="Signup" name="submit">
+	</form>
+	<p style="color: rgb(24, 251, 217);">
+		{% if user %}
+		 User found with the username{{user.username}}
+		
+		{% endif %}
+		
+		
+	</p>
+	<p style="color: rgb(255, 5, 5);" >
+	{% if error %}
+	Error occured messgae => <span>{{error}}</span>
+	
+	{% endif %}</p>
+	
+</body>
+</html>

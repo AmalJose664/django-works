@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			font-family: sans-serif;
+			margin: 20px 20px auto;
+		}
+	</style>
+</head>
+<body>
+	<h2>Create movies</h2>
+	<form  method="post">
+		{% csrf_token %}
+		<!-- <input type="text" name="name" required>
+		<label for="">name</label>
+
+		<br>
+
+		<input type="number" name="year" required>
+		<label for="">Year</label>
+		
+		<br>
+		<input type="text" name="sum" required>
+		<label for="">Summary</label>
+		
+		<br>
+		 -->
+		{{ frm.as_p }}
+		<input type="submit" value="submit" name="submit">
+	</form>
+	<a href="{% url 'edit' %}">Edit</a>
+	<a href="{% url 'signup' %}">Signup</a>
+	<a href="{% url 'login' %}">Login</a>
+</body>
+</html>
